@@ -47,3 +47,37 @@ how the app is structured and how to run it.
   ```bash
   docker-compose up -d
   ```
+
+### 3. Check Running Containers
+
+- To list all running containers and verify their status, run:
+
+  ```bash
+  docker-compose ps
+  ```
+
+### 4. View Logs
+
+- To view the logs of a specific container, use:
+
+  ```bash
+  docker-compose logs <container_name>
+  ```
+
+### 5. Running Containers Individually
+
+- If you want to start containers individually (e.g., starting the backend
+  only), you can use:
+
+  ```bash
+  docker-compose up <service_name>
+  ```
+
+### 6. Stop and Remove Containers
+
+- To stop and remove all running containers, along with their associated
+  networks and volumes, run:
+
+  ```bash
+  docker-compose down
+  ```

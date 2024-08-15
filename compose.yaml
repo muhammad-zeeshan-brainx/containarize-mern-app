@@ -11,8 +11,6 @@ services:
     build:
       context: ./backend
       dockerfile: Dockerfile
-    #   args:
-    #     some-arg: 1
     volumes:
       - ./backend:/app
     ports:

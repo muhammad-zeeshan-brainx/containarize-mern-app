@@ -1,0 +1,41 @@
+name: mern
+
+services:
+  mongodb:
+    image: 'mongo'
+    volumes:
+      - data:/data/db
+    networks:
+      - app-net
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    volumes:
+      - ./backend:/app
+    ports:
+      - '3001:3001'
+    env_file:
+      - ./env/backend.env
+    networks:
+      - app-net
+    depends_on:
+      - mongodb
+    command: npm run dev
+  frontend:
+    build: ./frontend
+    ports:
+      - '5173:5173'
+    volumes:
+      - ./frontend/src:/app/src
+    networks:
+      - app-net
+    stdin_open: true
+    tty: true
+    depends_on:
+      - backend
+
+volumes:
+  data:
+networks:
+  app-net:
